@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using static Unity.VisualScripting.Member;
 
 public class LogicScript : MonoBehaviour
 {
     public int playerScore;
     public Text scoreText;
+    public AudioSource bellSFX;
+    public AudioSource smackSFX;
 
     // Remember this must be dragged and dropped in as a reference in Unity.
     public GameObject gameOverScreen;
@@ -20,6 +23,7 @@ public class LogicScript : MonoBehaviour
         // Had to import (using) UnityEngine.UI
         playerScore+=scoreToAdd;
         scoreText.text = playerScore.ToString();
+        bellSFX.Play();
     }
 
     public void restartGame()
@@ -31,6 +35,7 @@ public class LogicScript : MonoBehaviour
     //Function to trigger when the bird crashes into a pipe.
     public void gameOver()
     {
+        smackSFX.Play();
         gameOverScreen.SetActive(true);
     }
 }

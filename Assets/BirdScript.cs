@@ -8,12 +8,12 @@ public class BirdScript : MonoBehaviour
     public float flapStrength;
     public LogicScript logic;
     public bool birdIsAlive = true;
+    public AudioSource whooshSFX;
 
     // Start is called before the first frame update
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
-
     }
 
     // Update is called once per frame
@@ -22,6 +22,7 @@ public class BirdScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)==true && birdIsAlive)
         {
             myRigidbody.velocity = Vector2.up * flapStrength;
+            whooshSFX.Play();
         }    
     }
 

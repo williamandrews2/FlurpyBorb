@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeMiddleScript : MonoBehaviour
+public class GameAreaScript : MonoBehaviour
 {
     public LogicScript logic;
     public BirdScript bird;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -14,18 +13,10 @@ public class PipeMiddleScript : MonoBehaviour
         bird = GameObject.FindGameObjectWithTag("Bird").GetComponent<BirdScript>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Make game end when bird leaves the trigger volume (screen)
+    void OnTriggerExit2D(Collider2D other)
     {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.layer == 3 && bird.birdIsAlive)
-        {
-            logic.addScore(1);
-        }
-        
+        logic.gameOver();
+        bird.birdIsAlive = false;
     }
 }
