@@ -5,7 +5,7 @@ using UnityEngine;
 public class PipeMoveScript : MonoBehaviour
 {
 
-    public float moveSpeed = 5;
+    public float moveSpeed = 7;
 
     // Position at the left end of the screen where we will destroy the pipes.
     public float deadZone = -35;
